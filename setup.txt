@@ -1,0 +1,227 @@
+🚀 WSL + Ubuntu + Nix + Home Manager Setup
+🧩 Step 1 — Install WSL with Ubuntu
+
+Open PowerShell as Administrator and run:
+
+wsl --install -d Ubuntu
+
+
+Then:
+
+Launch Ubuntu from the Start Menu
+
+Set your username
+
+Set your password
+
+🐧 Step 2 — Prepare Ubuntu for Nix
+
+Inside your fresh Ubuntu WSL:
+
+Update the system
+sudo apt update && sudo apt upgrade -y
+
+Install required helpers if fail-sudo apt install -y curl xz-utils
+
+
+
+⚠️ Do NOT install git here — Nix + Home Manager will manage it.
+
+📁 Step 3 — Copy Your Repo into WSL
+
+Your Windows repo lives at:
+
+C:\Users\<you>\src\nix_wsl
+
+
+Inside WSL, copy it into your Home Manager config directory:
+
+mkdir -p ~/.config
+cp -r /mnt/c/Users/<you>/src/nix_wsl ~/.config/home-manager
+
+
+Verify the structure:
+
+ls ~/.config/home-manager
+
+
+You should see something like:
+
+flake.nix
+flake.lock
+home.nix
+git.nix
+neovim.nix
+...
+
+❄️ Step 4 — Install Nix (Multi-User + Flakes)
+
+Inside WSL Ubuntu:
+
+Install Nix
+sh <(curl -L https://nixos.org/nix/install) --daemon
+
+Load Nix into your current shell
+. /etc/profile.d/nix.sh
+
+Verify installation
+nix --version
+
+🔬 Step 5 — Enable Flakes
+mkdir -p ~/.config/nix
+
+cat << 'EOF' > ~/.config/nix/nix.conf
+experimental-features = nix-command flakes
+EOF
+
+🏗 Step 6 — Build & Activate Home Manager (Flakes)
+
+Navigate to your config:
+
+cd ~/.config/home-manager
+
+Build activation package
+nix build .#homeConfigurations.k0mrade.activationPackage
+
+Activate configuration
+./result/activate
+
+✅ What This Automatically Sets Up
+
+Home Manager will:
+
+Install Git
+
+Install GitHub CLI
+
+Install Neovim
+
+Install LazyGit
+
+Apply your .bashrc
+
+Set environment variables (EDITOR, PAGER, BROWSER)
+
+Enable Home Manager management
+
+Everything matches your previous setup 🎯
+
+🔎 Step 7 — Verify Everything
+git --version
+gh --version
+nvim --version
+lazygit --version
+
+echo $EDITOR
+echo $BROWSER
+
+
+___________________________________________________________________________________________________________________________________________
+1️⃣ Install Nix (multi-user)
+sh <(curl -L https://nixos.org/nix/install) --daemon
+. /etc/profile.d/nix.sh
+
+2️⃣ Clone your repo (on Windows or WSL, then copy to Ubuntu WSL)
+# On Windows Git Bash
+git clone https://github.com/DandreOliver/nix_wsl.git
+
+# Then in WSL
+mkdir -p ~/.config/home-manager
+cp -r /mnt/c/Users/<YourUser>/src/nix_wsl/* ~/.config/home-manager/
+
+3️⃣ Activate the flake
+# Go into the repo
+cd ~/.config/home-manager
+
+# Build & activate the home configuration from the flake
+nix build .#homeConfigurations.k0mrade.activationPackage
+./result/activate
+
+______________________________________________________
+
+Make sure flake.lock is up-to-date:
+
+nix flake update
+
+
+Rebuild & activate:
+
+nix build .#homeConfigurations.k0mrade.activationPackage
+./result/activate
+__________________________________________________
+
+1️⃣ Missing dependencies (rare in flakes)
+
+If Nix tries to build something but the binary cache doesn’t have it, it may ask for curl, git, etc.
+
+Solution: Make sure your system has basic tools installed:
+
+sudo apt update
+sudo apt install -y curl git xz-utils
+
+
+These are just helpers for Nix; flakes will still manage versions inside Nix.
+
+___________________________________________________
+_________________________________________________________________________________________________________________________________________old_setup____________________________________________________________________________________________________________________________
+-------------------------------------------------------------------------------home-manager switch -b backup
+
+1️⃣ Install Git first (outside Nix)
+# Update package lists
+sudo apt update
+
+# Install Git
+sudo apt install -y git curl
+
+# Verify Git works
+git --version
+
+
+This makes sure Git can handle cloning your repo before Nix is installed, so Windows path quirks don’t break anything.
+
+2️⃣ Clone your repo into the Home Manager folder
+# Make the config folder
+mkdir -p ~/.config
+
+# Clone the repo directly to ~/.config/home-manager
+git clone https://github.com/DandreOliver/nix_wsl.git ~/.config/home-manager
+
+# Check that files are there
+ls -la ~/.config/home-manager
+
+
+✅ At this point, you should see all your .nix files (home.nix, git.nix, etc.) without the old invalid \ file.
+
+3️⃣ Install Nix (multi-user recommended)
+# Multi-user install
+sh <(curl -L https://nixos.org/nix/install) --daemon
+
+# Source Nix immediately
+. /etc/profile.d/nix.sh
+
+# Verify installation
+nix --version
+
+4️⃣ Install Home Manager (via Nix)
+# Switch to your Home Manager repo
+cd ~/.config/home-manager
+
+# If using flakes:
+nix build .#homeConfigurations.k0mrade.activationPackage
+./result/activate
+
+# Or without flakes:
+home-manager switch -b backup
+
+
+This reads your modular .nix configs (home.nix imports git.nix, gh.nix, etc.) and activates them.
+
+5️⃣ Verify everything
+# Check Git / GH / Neovim installs
+git --version
+gh --version
+nvim --version
+
+# Check Home Manager
+home-manager status
+________________________
