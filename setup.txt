@@ -74,6 +74,10 @@ cat << 'EOF' > ~/.config/nix/nix.conf
 experimental-features = nix-command flakes
 EOF
 
+
+nix profile add nixpkgs#home-manager
+
+
 🏗 Step 6 — Build & Activate Home Manager (Flakes)
 
 Navigate to your config:
