@@ -32,6 +32,7 @@
     wget
     yt-dlp
     curl
+    tldr
 
     # ─── Programming / Dev ───
     nodejs
