@@ -14,7 +14,7 @@ lg() {
 }
 
 hmsw() {
-  [[ $- != *i* ]] && return 1   # Only interactive shells
+  [[ $- != *i* ]] && return 1   # Only run in interactive shells
 
   local HM_DIR="$HOME/.config/home-manager"
   local USERNAME
@@ -25,10 +25,10 @@ hmsw() {
     return 1
   fi
 
-  cd "$HM_DIR" || return 1
   echo "🏠 Switching Home Manager for user: $USERNAME"
-
-  nix run github:nix-community/home-manager -- \
-    switch --flake ".#${USERNAME}"
+  
+  # Use nix run with local flake path, no need to cd
+  nix run "file://${HM_DIR}#${USERNAME}" -- switch --flake "${HM_DIR}#${USERNAME}"
 }
+
 
