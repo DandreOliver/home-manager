@@ -1,12 +1,14 @@
-# ~/.config/home-manager/starship.nix
-{ config, pkgs, ... }:
+{ pkgs, ... }:
 
 {
   programs.starship = {
     enable = true;
-    settings = {}; # optional if you only use starship.toml
-  };
 
-  xdg.configFile."starship.toml".source = ~/.config/home-manger/conf/starship.toml;
+    settings = {
+      scan.scan_timeout = 5000;   # 5 seconds
+      # or disable scanning entirely
+      # scan.disabled = true;
+    };
+  };
 }
 

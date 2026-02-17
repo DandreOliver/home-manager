@@ -1,0 +1,3 @@
+[scan]
+scan_timeout = 5000   # milliseconds, 5 seconds
+

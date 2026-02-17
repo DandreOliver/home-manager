@@ -3,6 +3,10 @@
   home.packages = with pkgs; [
     # ─── Essentials ───
     wslu
+    alsa-utils
+    alsa-plugins
+    pipewire
+    pulseaudio
     git
     lazygit
     tmux
@@ -51,7 +55,7 @@
     #UNUSED#
     # ─── Shell / Productivity ───
     #zsh
-    #starship   # fancy shell prompt
+   # starship   # fancy shell prompt
     #autojump
     #tmuxinator # tmux session manager
     #

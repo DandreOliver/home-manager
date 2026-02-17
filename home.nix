@@ -6,6 +6,8 @@
   home.username = "k0mrade";
   home.homeDirectory = "/home/k0mrade";
 
+  # Automatically backup any files that Home Manager is going to overwrite
+	#
 imports = [
   ./nix/git.nix
   ./nix/ani-cli.nix
@@ -17,7 +19,6 @@ imports = [
   ./nix/sessionVariables.nix
   ./nix/programs.nix
   ./nix/tmux.nix
-  ./nix/termusic.nix
 ];
 
 }
