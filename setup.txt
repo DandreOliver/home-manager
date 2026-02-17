@@ -1,3 +1,63 @@
+sh <(curl -L https://nixos.org/nix/install) --no-daemon
+
+nix flakes update
+
+nix run github:nix-community/home-manager -- switch --flake ~/.config/home-manager#k0mrade
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ___
 
 

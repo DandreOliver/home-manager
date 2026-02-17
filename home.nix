@@ -17,6 +17,7 @@ imports = [
   ./nix/sessionVariables.nix
   ./nix/programs.nix
   ./nix/tmux.nix
+  ./nix/termusic.nix
 ];
 
 }
