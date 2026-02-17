@@ -1,4 +1,3 @@
-# ~/.config/home-manager/bash.nix
 { config, pkgs, ... }:
 
 {
@@ -6,9 +5,6 @@
     enable = true;
 
     initExtra = ''
-      # Only run bootstrap in interactive shells
-      [[ $- != *i* ]] && return
-
       # PATH
       export PATH="$HOME/.local/bin:$HOME/.nix-profile/bin:$PATH"
 

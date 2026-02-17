@@ -6,16 +6,18 @@
   home.username = "k0mrade";
   home.homeDirectory = "/home/k0mrade";
 
-  imports = [
-    ./git.nix
-    ./ani-cli.nix
-    ./bash.nix
-    ./neovim.nix
-    ./lazygit.nix
-    ./gh.nix
-    ./starship.nix
-    ./sessionVariables.nix
-    ./programs.nix
-  ];
+imports = [
+  ./nix/git.nix
+  ./nix/ani-cli.nix
+  ./nix/bash.nix
+  ./nix/neovim.nix
+  ./nix/lazygit.nix
+  ./nix/gh.nix
+  ./nix/starship.nix
+  ./nix/sessionVariables.nix
+  ./nix/programs.nix
+  ./nix/tmux.nix
+];
+
 }
 

@@ -7,6 +7,6 @@
     settings = {}; # optional if you only use starship.toml
   };
 
-  xdg.configFile."starship.toml".source = ./starship.toml;
+  xdg.configFile."starship.toml".source = ~/.config/home-manger/conf/starship.toml;
 }
 
