@@ -9,16 +9,16 @@
   # Automatically backup any files that Home Manager is going to overwrite
 	#
 imports = [
-  ./nix/git.nix
-  ./nix/ani-cli.nix
-  ./nix/bash.nix
-  ./nix/neovim.nix
-  ./nix/lazygit.nix
-  ./nix/gh.nix
-  ./nix/starship.nix
-  ./nix/sessionVariables.nix
-  ./nix/programs.nix
-  ./nix/tmux.nix
+  ./git.nix
+  ./ani-cli.nix
+  ./bash.nix
+  ./neovim.nix
+  ./lazygit.nix
+  ./gh.nix
+  ./starship.nix
+  ./sessionVariables.nix
+  ./programs.nix
+  ./tmux.nix
 ];
 
 }
