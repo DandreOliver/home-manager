@@ -6,8 +6,6 @@
   home.username = "k0mrade";
   home.homeDirectory = "/home/k0mrade";
 
-
-
   imports = [
     ./git.nix
     ./ani-cli.nix
@@ -15,11 +13,12 @@
     ./neovim.nix
     ./lazygit.nix
     ./gh.nix
+    #./home-manager.nix
     ./starship.nix
     ./sessionVariables.nix
   ];
-
   
+ programs.home-manager.enable = true;
 
   home.packages = with pkgs; [
     # ─── Essentials ───
@@ -85,18 +84,5 @@
     ncdu  ];
 
 
- # home.sessionVariables = {
- #   EDITOR  = "nvim";
- #   PAGER   = "less";
- #   BROWSER = "wslview";
- # };
- 
-  #To add programs example.
-  #programs.git.enable = true;
-  #programs.tmux.enable = true;
-  #programs.neovim.enable = true;
-  #programs.home-manager.enable = true;
-  #programs.starship.enable = true;
-  #programs.bash.enable = true;
 }
 

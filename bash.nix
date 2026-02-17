@@ -37,6 +37,7 @@
       alias gp="git push"
       alias gpl="git pull"
       alias gb="git branch"
+      alias ff="fastfetch"
       alias gcb="git checkout -b"
       alias grb="git rebase"
       alias gamend="git commit --amend"
@@ -59,10 +60,21 @@
       }
 
       # ----------------------------
-      # Custom "working directory" aliases
+      # Nix / Home Manager shortcuts
       # ----------------------------
       alias nfu='(cd ~/.config/home-manager && nix flake update)'
-      alias hmsw='(cd ~/.config/home-manager && home-manager switch --flake .#k0mrade)'
+
+      # Updated flakes-compatible Home Manager switch alias
+      function hmsw() {
+          cd ~/.config/home-manager || return
+          if command -v home-manager &>/dev/null; then
+              # fallback if home-manager binary is in PATH
+              home-manager switch --flake .#k0mrade
+          else
+              # flakes-compatible run if binary is missing
+              nix run github:nix-community/home-manager -- switch --flake .#k0mrade
+          fi
+      }
 
       # ----------------------------
       # Starship prompt
