@@ -4,8 +4,9 @@
 {
   programs.starship = {
     enable = true;
-    # Path must be inside home directory, not nix store
-    configPath = "${config.home.homeDirectory}/.config/home-manager/starship.toml";
+    settings = {}; # optional if you only use starship.toml
   };
+
+  xdg.configFile."starship.toml".source = ./starship.toml;
 }
 

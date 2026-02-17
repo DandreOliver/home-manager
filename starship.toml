@@ -1,6 +1,9 @@
 # ~/.config/home-manager/starship.toml
 format = "$username$directory$git_branch$git_status$python$nodejs$time$character"
 
+# Increase timeout for WSL / large repos
+scan_timeout = 50
+
 [username]
 style_user = "bold green"
 style_root = "bold red"
@@ -43,10 +46,7 @@ format = "🕒 %H:%M"
 style = "bold magenta"
 
 [character]
-success_symbol = "❯"
-error_symbol = "❯"
-vicmd_symbol = "❮"
-style_success = "bold green"
-style_error = "bold red"
-style_vicmd = "bold yellow"
+success_symbol = "[❯](bold green)"
+error_symbol   = "[❯](bold red)"
+vicmd_symbol   = "[❮](bold yellow)"
 
