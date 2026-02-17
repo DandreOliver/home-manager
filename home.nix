@@ -11,11 +11,15 @@
   imports = [
     ./git.nix
     ./ani-cli.nix
-    ./bashrc.nix
+    ./bash.nix
     ./neovim.nix
     ./lazygit.nix
     ./gh.nix
+    ./starship.nix
+    ./sessionVariables.nix
   ];
+
+  
 
   home.packages = with pkgs; [
     # ─── Essentials ───
@@ -32,7 +36,11 @@
     wget
     yt-dlp
     curl
+    dos2unix
     tldr
+    #joplin
+    #logseq
+    fastfetch
 
     # ─── Programming / Dev ───
     nodejs
@@ -47,22 +55,23 @@
     docker-compose
 
     # ─── Shell / Productivity ───
-    zsh
-    starship   # fancy shell prompt
-    autojump
-    tmuxinator # tmux session manager
+    #zsh
+    #starship   # fancy shell prompt
+    #autojump
+    #tmuxinator # tmux session manager
 
     # ─── Fun / CLI Utilities ───
     mpv
     ani-cli
+    mangal
+    mov-cli
     termusic  # Youtube Music TUI
-    neofetch
-    cowsay
+    #cowsay
     figlet
     lolcat
-    cmatrix
-    sl         # steam locomotive lol
-    asciinema # terminal screencasts
+    #cmatrix
+    #sl         # steam locomotive lol
+    #asciinema # terminal screencasts
 
     # ─── Networking / Hacking / Misc ───
     nmap
@@ -75,16 +84,19 @@
     fping
     ncdu  ];
 
-  programs.bash.enable = true;
 
-  home.sessionVariables = {
-    EDITOR  = "nvim";
-    PAGER   = "less";
-    BROWSER = "wslview";
-  };
-  programs.git.enable = true;
-  programs.tmux.enable = true;
-  programs.neovim.enable = true;
-  programs.home-manager.enable = true;
+ # home.sessionVariables = {
+ #   EDITOR  = "nvim";
+ #   PAGER   = "less";
+ #   BROWSER = "wslview";
+ # };
+ 
+  #To add programs example.
+  #programs.git.enable = true;
+  #programs.tmux.enable = true;
+  #programs.neovim.enable = true;
+  #programs.home-manager.enable = true;
+  #programs.starship.enable = true;
+  #programs.bash.enable = true;
 }
 
