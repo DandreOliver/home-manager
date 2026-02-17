@@ -13,22 +13,23 @@ lg() {
   fi
 }
 
-hmsw() {
-  [[ $- != *i* ]] && return 1   # Only run in interactive shells
-
-  local HM_DIR="$HOME/.config/home-manager"
-  local USERNAME
-  USERNAME="$(whoami)"
-
-  if [ ! -d "$HM_DIR" ]; then
-    echo "❌ Home Manager directory not found: $HM_DIR"
-    return 1
-  fi
-
-  echo "🏠 Switching Home Manager for user: $USERNAME"
-  
-  # Use nix run with local flake path, no need to cd
-  nix run "file://${HM_DIR}#${USERNAME}" -- switch --flake "${HM_DIR}#${USERNAME}"
-}
+#hmsw() {
+#  [[ $- != *i* ]] && return 1   # Only interactive shells
+#
+#  # THIS IS YOUR FLAKE ROOT
+#  local HM_DIR="$HOME/.config/home-manager/nix"
+#  local USERNAME
+#  USERNAME="$(whoami)"
+#
+#  if [ ! -d "$HM_DIR" ]; then
+#    echo "❌ Home Manager directory not found: $HM_DIR"
+#    return 1
+#  fi
+#
+#  echo "🏠 Switching Home Manager for user: $USERNAME"
+#
+#  # Use git+file:// for local git repo flakes
+#  nix run "git+file://${HM_DIR}" -- switch --flake ".#${USERNAME}"
+#}
 
 
