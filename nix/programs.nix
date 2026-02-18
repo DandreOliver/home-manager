@@ -2,6 +2,10 @@
 {
   home.packages = with pkgs; [
     # ─── Essentials ───
+    #knot-exporter  
+    #mailutils-mh  
+    mmh            
+    #termtris
     wslu
     alsa-utils
     alsa-plugins
@@ -34,7 +38,6 @@
     docker
     docker-compose
     # ─── Fun / CLI Utilities ───
-    mpv
     ani-cli
     mangal
     mov-cli
