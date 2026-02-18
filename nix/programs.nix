@@ -5,6 +5,7 @@
     #knot-exporter  
     #mailutils-mh  
     mmh            
+    lobster
     #termtris
     wslu
     alsa-utils

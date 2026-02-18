@@ -19,6 +19,7 @@ imports = [
   ./sessionVariables.nix
   ./programs.nix
   ./tmux.nix
+  ./cava.nix
 ];
 
 }

@@ -15,7 +15,7 @@ alias gp='git push'
 alias gpl='git pull'
 
 # Home Manager shortcuts
-alias cdhm='cd ~/'
+alias fd='cd ~/'
 alias cdwin='cd /mnt/c/Users/dandr/'
 alias hmcd='cd ~/.config/home-manager/nix/'
 alias nfu='(cd ~/.config/home-manager/nix/ && nix flake update)'

@@ -1,0 +1,18 @@
+#!/bin/bash
+# Windows MPV wrapper for WSL
+
+MPV_WIN="/mnt/c/Users/dandr/AppData/Local/Microsoft/WindowsApps/mpv.exe"
+
+iargs=("$@")
+oargs=()
+for arg in "${iargs[@]}"; do
+    # Convert Linux paths to Windows paths if they look like files
+    if [[ $arg =~ \.[0-9a-zA-Z_]{1,5}$ ]]; then
+        oargs+=("$(wslpath -w "$arg")")
+    else
+        oargs+=("$arg")
+    fi
+done
+
+"$MPV_WIN" "${oargs[@]}"
+
