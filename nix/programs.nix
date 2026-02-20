@@ -1,73 +1,66 @@
-  { config, pkgs, ... }:
+{ config, pkgs, ... }:
+
 {
   home.packages = with pkgs; [
-    # ─── Essentials ───
-    #knot-exporter  
-    #mailutils-mh  
-    mmh            
-    lobster
-    #termtris
-    wslu
-    alsa-utils
-    alsa-plugins
-    pipewire
-    pulseaudio
+
+    # ─── Essentials / Core CLI Tools ───
     git
-    lazygit
-    tmux
-    htop
-    fzf     
-    ripgrep  
-    bat      
-    fd        
-    tree
     wget
-    yt-dlp
     curl
+    tree
+    fd
+    ripgrep
+    bat
     dos2unix
     tldr
     fastfetch
-    # ─── Programming / Dev ───
-    nodejs
-    python3
-    python3Packages.pip
-    go
-    rustup
-    gcc
-    gdb
-    cmake
-    docker
-    docker-compose
-    # ─── Fun / CLI Utilities ───
+    lazygit
+    tmux
+    htop
+    fzf
+
+    # ─── Audio / Media / Fun ───
+    yt-dlp
+    pipewire
+    pulseaudio
+    alsa-utils
+    alsa-plugins
     ani-cli
+    termusic
     mangal
     mov-cli
-    termusic  
     figlet
     lolcat
-    # ─── Networking / Hacking / Misc ───
+
+    # ─── Networking / Sysadmin / Misc ───
     nmap
-    wget
-    curl
     httpie
     jq        # JSON CLI parser
     yq        # YAML CLI parser
-    tree-sitter # dev tool
     fping
-    ncdu  
+    ncdu
+    wslu      # WSL utilities
 
-    #UNUSED#
-    # ─── Shell / Productivity ───
-    #zsh
-   # starship   # fancy shell prompt
-    #autojump
-    #tmuxinator # tmux session manager
-    #
-    #cmatrix
-    #sl         # steam locomotive lol
-    #asciinema # terminal screencasts
-    #cowsay
-    #joplin
-    #logseq
-    ];
-  }
+    # ─── UNUSED / Optional / Commented Out ───
+    # starship      # fancy shell prompt
+    # autojump      # directory jump
+    # cmatrix       # matrix effect
+    # sl            # steam locomotive animation
+    # asciinema     # terminal screencasts
+    # joplin        # note-taking app
+    # logseq        # note-taking app
+
+    ### ─── CODING STUFF TO INSTALL MANUALLY (DO NOT INSTALL VIA NIX) ───
+    # nodejs        # install via nvm (includes npm)
+    # npm           # comes with nodejs via nvm
+    # python3       # install via apt or pyenv
+    # python3Packages.pip  # install manually after python3
+    # go            # install manually from official Go
+    # rustup        # install manually from rustup.rs
+    # gcc           # install manually if needed
+    # gdb           # install manually if needed
+    # cmake         # install manually if needed
+    # docker        # install manually from official Docker guide
+    # docker-compose
+  ];
+}
